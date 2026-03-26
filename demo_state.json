@@ -1,0 +1,49 @@
+{
+  "agents": {
+    "agent1": {
+      "capabilities": [
+        "python",
+        "ml"
+      ],
+      "tasks": [
+        "task1"
+      ]
+    },
+    "agent2": {
+      "capabilities": [
+        "javascript"
+      ],
+      "tasks": [
+        "task2"
+      ]
+    }
+  },
+  "tasks": {
+    "task1": {
+      "requirements": [
+        "python",
+        "ml"
+      ],
+      "assigned_agents": [
+        "agent1"
+      ],
+      "priority": 1,
+      "a": "agent1"
+    },
+    "task2": {
+      "requirements": [
+        "javascript"
+      ],
+      "assigned_agents": [
+        "agent2"
+      ],
+      "priority": 1,
+      "a": "agent2"
+    }
+  },
+  "feedback": {
+    "agent1": {
+      "task1": 4.5
+    }
+  }
+}

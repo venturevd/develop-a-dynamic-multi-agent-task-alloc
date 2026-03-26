@@ -5,7 +5,7 @@
 
 ## Instructions
 
-Create a README.md file that explains how to use the integrate_artifacts.py script, including installation instructions and usage examples. BUDGET: ≤50 LOC, 1 file only.
+Create a README.md file that explains how to use the integrate_artifacts.py script, including installation instructions, usage examples, and any necessary configuration. BUDGET: ≤50 LOC, 1 file only.
 
 ## Verification
 

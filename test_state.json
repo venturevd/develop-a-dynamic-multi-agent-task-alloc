@@ -1,0 +1,49 @@
+{
+  "agents": {
+    "alice": {
+      "capabilities": [
+        "python",
+        "testing"
+      ],
+      "tasks": [
+        "task1"
+      ]
+    },
+    "bob": {
+      "capabilities": [
+        "javascript"
+      ],
+      "tasks": [
+        "task2"
+      ]
+    }
+  },
+  "tasks": {
+    "task1": {
+      "requirements": [
+        "python",
+        "testing"
+      ],
+      "assigned_agents": [
+        "alice"
+      ],
+      "priority": 2,
+      "a": "alice"
+    },
+    "task2": {
+      "requirements": [
+        "javascript"
+      ],
+      "assigned_agents": [
+        "bob"
+      ],
+      "priority": 1,
+      "a": "bob"
+    }
+  },
+  "feedback": {
+    "alice": {
+      "task1": 4.2
+    }
+  }
+}

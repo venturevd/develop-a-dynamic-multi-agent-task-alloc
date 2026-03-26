@@ -5,6 +5,7 @@ A CLI tool for real-time dynamic assignment of tasks to agents by integrating th
 ## Features
 
 - Import-based integration with `AgentBroker` for centralized coordination
+- **State persistence** via `--persist` flag (survives multiple invocations)
 - Real-time task assignment on submission with automatic matching
 - Multi-criteria scoring: capabilities (required), workload (balance), performance (feedback)
 - Task priority support for urgency weighting
@@ -33,6 +34,7 @@ python3 main.py --help
 | `-T ID`, `--task ID` | Submit a new task |
 | `-r REQS`, `--req REQS` | Task requirements (comma-separated) |
 | `-p N`, `--pri N` | Task priority (default: 1) |
+| `--persist FILE` | Save/load state from JSON file (enables multi-command usage) |
 | `-R`, `--rebalance` | Rebalance all task assignments |
 | `-S`, `--status` | Show current allocation status |
 | `-j`, `--json` | Output status as JSON (instead of text) |
@@ -57,19 +59,24 @@ python3 main.py -a agent1 -c python,api,testing -T task1 -r python,api -p 2 -S -
 
 **Multiple operations across separate invocations:**
 
+> **Note:** Without `--persist`, state is lost when the command exits. For multi-command workflows, use `--persist <file>`.
+
 ```bash
+# Use a state file to persist data across commands
+STATE="state.json"
+
 # Register agents
-python3 main.py -a agent1 -c python,ml
-python3 main.py -a agent2 -c javascript,frontend
-python3 main.py -a agent3 -c python,api
+python3 main.py --persist $STATE -a agent1 -c python,ml
+python3 main.py --persist $STATE -a agent2 -c javascript,frontend
+python3 main.py --persist $STATE -a agent3 -c python,api
 
 # Submit tasks
-python3 main.py -T data_processing -r python,ml -p 1
-python3 main.py -T web_ui -r javascript,frontend -p 1
-python3 main.py -T api_service -r python,api -p 2
+python3 main.py --persist $STATE -T data_processing -r python,ml -p 1
+python3 main.py --persist $STATE -T web_ui -r javascript,frontend -p 1
+python3 main.py --persist $STATE -T api_service -r python,api -p 2
 
 # Show status
-python3 main.py -S
+python3 main.py --persist $STATE -S
 ```
 
 **Rebalance assignments to optimize workload:**
@@ -133,18 +140,18 @@ This tool extends the `AgentBroker` class from `agent_representation_broker.agen
 - Workload-aware scoring
 - Performance feedback tracking
 - Rebalancing method
+- **State persistence** via JSON file (CLI `--persist` or `DynamicAllocator(state_file=...)`)
 
-The broker state is in-memory only. For persistence, serialize using `broker.agents` and `broker.tasks` dictionaries along with `broker.feedback`.
+The state file stores the complete agents, tasks, and feedback dictionaries. Loading from a file restores all assignments, priorities, and feedback history.
 
 ## Limitations
 
-- In-memory state only (lost on exit)
+- State is file-based; concurrent writes from multiple processes may cause corruption
 - CLI arguments replace each other; use the Python API for bulk operations
 - Single-process; for distributed deployment, layer a REST API on top of `AgentBroker`
 
 ## Future Enhancements
 
-- State persistence via JSON file
 - Bulk import/export CLI commands
 - More advanced scoring (deadline awareness, skill compatibility)
 - REST API server mode

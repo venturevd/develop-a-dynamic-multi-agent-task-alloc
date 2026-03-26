@@ -13,14 +13,14 @@ Build a sophisticated task allocation system by integrating Artifact A and Artif
 ## Relevant existing artifacts (check before building):
   - **develop-an-enhanced-agent-oriented-task** (similarity 67%)
     Integrates `agent_representation_broker` with dynamic feedback and multi-criteria matching for efficient agent-task allocation.
+  - **develop-a-dynamic-multi-agent-task-alloc** (similarity 62%)
+    A CLI tool for real-time dynamic assignment of tasks to agents by integrating the `agent_representation_broker` with enhanced allocation algorithms. O
   - **develop-an-adaptive-multi-task-agent-coo** (similarity 60%)
     A lightweight CLI tool that extends the `AgentBroker` with dynamic, performance-based task adaptation. It matches agents to tasks not just by capabili
   - **develop-a-unified-agent-task-optimizatio** (similarity 58%)
     Dynamic agent-task matching with validation testing.
   - **develop-an-advanced-multi-modal-agent-co** (similarity 57%)
     This tool integrates the Agent Representation Broker with a CLI, REST server, and testing framework for efficient agent-task matching and coordination
-  - **build-an-agent-representation-broker-to-match-agen** [has tests] (similarity 57%)
-    The Agent Representation Broker is a service that matches agents with tasks based on their capabilities and requirements. It provides a centralized pl
 
 ## Related completed tasks:
   - Build an Agent Representation Broker to match agents with tasks

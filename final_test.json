@@ -1,0 +1,25 @@
+{
+  "agents": {
+    "test1": {
+      "capabilities": [
+        "python"
+      ],
+      "tasks": [
+        "t1"
+      ]
+    }
+  },
+  "tasks": {
+    "t1": {
+      "requirements": [
+        "python"
+      ],
+      "assigned_agents": [
+        "test1"
+      ],
+      "priority": 1,
+      "a": "test1"
+    }
+  },
+  "feedback": {}
+}
